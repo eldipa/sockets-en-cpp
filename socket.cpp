@@ -86,7 +86,7 @@ int socket_init_for_connection(
      * Si en cambio `skt` es distinto de -1 significa q tenemos
      * un socket abierto.
      * */
-    if (skt != 1)
+    if (skt != -1)
         close(skt);
 
     resolver_deinit(&resolver);
@@ -153,7 +153,7 @@ int socket_init_for_listen(
     int saved_errno = errno;
     printf("Socket setup failed: %s\n", strerror(saved_errno));
 
-    if (skt != 1)
+    if (skt != -1)
         close(skt);
 
     resolver_deinit(&resolver);
